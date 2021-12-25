@@ -1,0 +1,236 @@
+/* -------------------------- */
+/* ----- GENERALS STYLES ---- */
+/* -------------------------- */
+
+body {
+   max-width: 1440px;
+   margin: 40px auto;
+   padding: 40px 100px;
+   -webkit-box-sizing: border-box;
+   box-sizing: border-box;
+}
+
+ul,
+li {
+   list-style: none;
+}
+
+/* -------------------------- */
+/* --------- Header --------- */
+/* -------------------------- */
+
+header {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+}
+
+header h1 {
+   display: inline-block;
+   margin: -5px 0 0;
+   font-size: 36px;
+   font-weight: 700;
+   font-family: "DM Sans", "Open Sans", sans-serif;
+   color: #d04f4f;
+}
+
+/* -------------------------- */
+/* ------- Search bar ------- */
+/* -------------------------- */
+
+#search-entry {
+   height: 69px;
+   width: 96%;
+   margin: 20px auto;
+   padding: 0 22px;
+   font-size: 18px;
+   font-family: "lato";
+   border-radius: 5px;
+   border: none;
+   color: #6b6b6b;
+   background-color: #e7e7e7;
+}
+
+.fa-search {
+   position: relative;
+   float: right;
+   top: -79px;
+   width: 30px;
+   padding: 10px 15px;
+   font-size: 30px;
+}
+
+/* -------------------------- */
+/* ----- Selected tags ------ */
+/* -------------------------- */
+
+.selected-tags {
+   display: flex;
+   justify-content: space-evenly;
+   align-items: center;
+   height: 37px;
+   width: 107px;
+   border-radius: 5px;
+   background-color: #3282f7;
+}
+
+.tag {
+   font-size: 15px;
+   font-weight: 700;
+   font-family: "lato";
+   color: #fff;
+}
+
+.fa-times-circle {
+   font-size: 21px;
+   color: #fff;
+}
+
+/* -------------------------- */
+/* -------- Filters --------- */
+/* -------------------------- */
+
+.filters {
+   display: flex;
+   margin: 10px auto;
+}
+
+.ingredients-filter,
+.appliance-filter,
+.utensils-filter {
+   position: relative;
+   height: 69px;
+   width: 170px;
+   margin: 5px 10px;
+}
+
+.ingredients-filter {
+   margin-left: 0;
+}
+
+#ingredient-search,
+#appliance-search,
+#utensils-search {
+   height: 69px;
+   width: 140px;
+   padding: 0 15px;
+   letter-spacing: 0.2px;
+   border-radius: 5px;
+   border: none;
+   background-color: #3282f7;
+}
+
+#appliance-search {
+   background-color: #68d9a4;
+}
+
+#utensils-search {
+   background-color: #ed6454;
+}
+
+#ingredient-search::placeholder,
+#appliance-search::placeholder,
+#utensils-search::placeholder {
+   font-size: 17px;
+   font-weight: 700;
+   font-family: "lato";
+   color: #fff;
+   opacity: 1;
+}
+
+.fa-chevron-down,
+.fa-chevron-up {
+   position: absolute;
+   top: 42%;
+   right: 18px;
+   font-size: 17px;
+   color: #fff;
+}
+
+/* -------------------------- */
+/* --------- Cards ---------- */
+/* -------------------------- */
+
+.card {
+   width: 380px;
+   height: 364px;
+   margin: 20px 0;
+}
+
+.card-container a {
+   display: flex;
+   height: 178px;
+   border-radius: 5px 5px 0 0;
+   background-color: #c7bebe;
+}
+
+.infos {
+   display: flex;
+   flex-direction: column;
+   height: 146px;
+   padding: 20px;
+   border-radius: 0 0 5px 5px;
+   background-color: #e7e7e7;
+}
+
+/* Infos header */
+.infos-header {
+   display: flex;
+   justify-content: space-between;
+}
+
+.infos-header h2 {
+   margin: 0;
+   font-size: 18px;
+   font-weight: 400;
+   font-family: "lato";
+}
+
+.time .text {
+   font-size: 18px;
+   font-weight: 700;
+   font-family: "lato";
+}
+
+.time .fa-clock {
+   position: relative;
+   top: 1px;
+   margin: 0 3px;
+   font-size: 21px;
+}
+
+/* Infos footer */
+.infos-footer {
+   display: flex;
+}
+
+.ingredients-list {
+   width: 50%;
+}
+
+.ingredients-list ul {
+   padding: 0;
+}
+
+.ingredient {
+   font-size: 12.5px;
+   font-weight: 700;
+   font-family: "lato";
+}
+
+.quantity-unit {
+   font-size: 12.5px;
+   font-weight: lighter;
+   font-family: "lato";
+}
+
+.description {
+   width: 50%;
+   margin-bottom: 0;
+   text-overflow: ellipsis;
+   overflow: hidden;
+   /* white-space: nowrap; */
+   font-size: 12px;
+   font-weight: 400;
+   font-family: "Roboto";
+}

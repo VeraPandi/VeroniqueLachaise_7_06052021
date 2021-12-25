@@ -5,8 +5,145 @@
       <meta http-equiv="X-UA-Compatible" content="IE=edge" />
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <title>Les petits plats</title>
+
+      <link
+         rel="stylesheet"
+         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+      />
+
+      <link
+         href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@700&family=Lato:wght@400;700&family=Montserrat:wght@100;200;300;400;500&family=Roboto&display=swap"
+         rel="stylesheet"
+      />
+
+      <link rel="stylesheet" href="styles.css" />
    </head>
    <body>
+      <header>
+         <a href="#">
+            <img src="image/logo.png" alt="logo de Les Petits Plats" />
+         </a>
+         <h1>Les petits plats</h1>
+      </header>
+      <main>
+         <section>
+            <!-- Search bar -->
+            <div class="search-bar">
+               <label for="search-entry"></label>
+               <input
+                  type="text"
+                  id="search-entry"
+                  name="search-entry"
+                  placeholder="Rechercher un ingrédient, appareil, ustensiles ou une recette"
+               />
+               <span class="fas fa-search"></span>
+            </div>
+
+            <!-- Selected tags -->
+            <div class="selected-tags">
+               <span class="tag">Coco</span>
+               <span class="far fa-times-circle"></span>
+            </div>
+
+            <!-- Search filters -->
+            <div class="filters">
+               <!-- Ingredients -->
+               <div class="ingredients-filter">
+                  <label for="ingredient-search"></label>
+                  <input
+                     type="text"
+                     id="ingredient-search"
+                     name="ingredient-search"
+                     placeholder="Ingredients"
+                  />
+                  <span class="fas fa-chevron-down"></span>
+                  <span class="fas fa-chevron-up"></span>
+                  <div class="ingredients-list">
+                     <ul>
+                        <li></li>
+                     </ul>
+                  </div>
+               </div>
+
+               <!-- Appliance -->
+               <div class="appliance-filter">
+                  <label for="appliance-search"></label>
+                  <input
+                     type="text"
+                     id="appliance-search"
+                     name="appliance-search"
+                     placeholder="Appareil"
+                  />
+                  <span class="fas fa-chevron-down"></span>
+                  <span class="fas fa-chevron-up"></span>
+                  <div class="appliance-list">
+                     <ul>
+                        <li></li>
+                     </ul>
+                  </div>
+               </div>
+
+               <!-- Utensils -->
+               <div class="utensils-filter">
+                  <label for="utensils-search"></label>
+                  <input
+                     type="text"
+                     id="utensils-search"
+                     name="utensils-search"
+                     placeholder="Ustensiles"
+                  />
+                  <span class="fas fa-chevron-down"></span>
+                  <span class="fas fa-chevron-up"></span>
+                  <div class="utensils-list">
+                     <ul>
+                        <li></li>
+                     </ul>
+                  </div>
+               </div>
+            </div>
+         </section>
+
+         <!-- Recipe cards -->
+         <section>
+            <article class="card">
+               <div class="card-container">
+                  <a href="#"></a>
+                  <div class="infos">
+                     <!-- Title / time -->
+                     <div class="infos-header">
+                        <h2 class="title">Limonade de Coco</h2>
+                        <div class="time">
+                           <span class="far fa-clock"></span>
+                           <span class="text">10 min</span>
+                        </div>
+                     </div>
+                     <!-- Ingredients / description  -->
+                     <div class="infos-footer">
+                        <div class="ingredients-list">
+                           <ul>
+                              <li class="ingredient">
+                                 Lait de coco:
+                                 <span class="quantity-unit">400ml</span>
+                              </li>
+                              <li>srjtsstsjsjtr</li>
+                              <li>stjstssrtjrtsrrtsjttd</li>
+                              <li>sttdrrssjtjtr</li>
+                              <li>strtrsjtrsrsr</li>
+                              <li>srsjssj</li>
+                           </ul>
+                        </div>
+                        <p class="description">
+                           hzhljkazff lhflkhlhfq lhfqsjh lkhfs lkkhlfqshmlfq
+                           lhflhqfshhqs lqskhfslhklsf lhflhkhqfmhfq
+                           hfjhmqsfjmjqf hqflskhmfj mhfqslkfelh
+                        </p>
+                     </div>
+                  </div>
+               </div>
+            </article>
+         </section>
+      </main>
+
       <script type="module" src="index.js"></script>
    </body>
 </html>
