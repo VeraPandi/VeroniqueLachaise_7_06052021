@@ -92,7 +92,7 @@ header h1 {
 
 .filters {
    display: flex;
-   margin: 10px auto;
+   margin: 10px auto -5px;
 }
 
 .ingredients-filter,
@@ -151,10 +151,16 @@ header h1 {
 /* --------- Cards ---------- */
 /* -------------------------- */
 
+.card-section {
+   display: flex;
+   flex-wrap: wrap;
+   justify-content: space-between;
+}
+
 .card {
    width: 380px;
    height: 364px;
-   margin: 20px 0;
+   margin: 25px 0;
 }
 
 .card-container a {
@@ -204,12 +210,18 @@ header h1 {
    display: flex;
 }
 
-.ingredients-list {
+.ingredients {
    width: 50%;
 }
 
-.ingredients-list ul {
+.ingredients ul {
    padding: 0;
+}
+
+.ingredients ul li {
+   font-size: 12px;
+   font-weight: 700;
+   font-family: "lato";
 }
 
 .ingredient {
@@ -219,18 +231,20 @@ header h1 {
 }
 
 .quantity-unit {
-   font-size: 12.5px;
+   font-size: 12px;
    font-weight: lighter;
    font-family: "lato";
 }
 
 .description {
    width: 50%;
+   height: 112px;
+   margin-top: 16px;
    margin-bottom: 0;
    text-overflow: ellipsis;
    overflow: hidden;
    /* white-space: nowrap; */
-   font-size: 12px;
+   font-size: 11.5px;
    font-weight: 400;
    font-family: "Roboto";
 }
