@@ -16,7 +16,7 @@
          rel="stylesheet"
       />
 
-      <link rel="stylesheet" href="styles.css" />
+      <link rel="stylesheet" href="css/styles.css" />
    </head>
    <body>
       <header>
@@ -54,7 +54,7 @@
                      type="text"
                      id="ingredient-search"
                      name="ingredient-search"
-                     placeholder="Ingredients"
+                     placeholder="Ingrédients"
                   />
                   <span class="fas fa-chevron-down"></span>
                   <span class="fas fa-chevron-up"></span>
@@ -72,7 +72,7 @@
                      type="text"
                      id="appliance-search"
                      name="appliance-search"
-                     placeholder="Appareil"
+                     placeholder="Appareils"
                   />
                   <span class="fas fa-chevron-down"></span>
                   <span class="fas fa-chevron-up"></span>
@@ -103,9 +103,13 @@
             </div>
          </section>
 
+         <span class="warning-message"></span>
+
          <!-- Recipe cards here -->
       </main>
 
-      <script type="module" src="index.js"></script>
+      <script type="module" src="js/card.js"></script>
+      <script src="js/search.js"></script>
+      <script type="module" src="js/search-bar.js"></script>
    </body>
 </html>
