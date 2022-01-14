@@ -6,15 +6,17 @@
 import { recipes } from "../api/recipes.js";
 import { createCard } from "./card.js";
 
+export { getIngredients };
+
 // _______________________________
 //
 //    WARNING MESSAGE
 // _______________________________
 // Displays a warning message if there are no recipes matching the search
-function warningMessage() {
-   const displayWarningMessage = document.querySelector(".warning-message");
-   displayWarningMessage.style.display = "block";
-   displayWarningMessage.innerHTML =
+function displayWarningMessage() {
+   const warningMessage = document.querySelector(".warning-message");
+   warningMessage.style.display = "block";
+   warningMessage.innerHTML =
       'Aucune recette ne correspond à votre critère... Vous pouvez chercher "tarte aux pommes", "poisson" etc';
 }
 
@@ -57,8 +59,16 @@ function searchInput() {
          for (let i = 0; i < recipes.length; i++) {
             recipe = recipes[i];
 
-            // Match checks
+            // Fill the array with all the recipes until the matches are verified
+            if (input.textLength < 3) {
+               const warningMessage =
+                  document.querySelector(".warning-message");
+               warningMessage.style.display = "none";
+               displayRecipes.push(recipe);
+            }
+
             if (input.textLength >= 3) {
+               // Checks matches
                const matchName = recipe.name // <= Recipe title
                   .toLowerCase()
                   .includes(input.value);
@@ -75,14 +85,14 @@ function searchInput() {
                   displayRecipes.push(recipe);
 
                   // Hide warning message
-                  const displayWarningMessage =
+                  const warningMessage =
                      document.querySelector(".warning-message");
-                  displayWarningMessage.style.display = "none";
+                  warningMessage.style.display = "none";
                }
 
                // Display warning message if there is no match
-               if (displayRecipes.length === 0 && input.textLength > 0) {
-                  warningMessage();
+               if (displayRecipes.length === 0) {
+                  displayWarningMessage();
                }
             }
          }

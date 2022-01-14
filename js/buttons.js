@@ -14,31 +14,42 @@ function ingredientFilterBtn() {
    openIngredientsFilter.addEventListener(
       "click",
       function (e) {
+         const openIngredientsFilterBox = document.querySelector(
+            ".ingredients-filter"
+         );
          const openIngredientsList = document.querySelector(
             ".ingredients-list ul"
          );
 
+         openIngredientsFilterBox.classList.toggle("visible");
          openIngredientsList.classList.toggle("visible");
          openIngredientsFilter.style.display = "none";
          closeIngredientsFilter.style.display = "flex";
 
-         // Change the text of the placeholder
-         const ingredientSearchInput = document
+         // Change the text and width of the placeholder
+         const ingredientSearch = document
             .getElementById("ingredient-search")
             .setAttribute("placeholder", "Rechercher un ingrédient");
+         const ingredientSearchInput = (document.querySelector(
+            "input#ingredient-search"
+         ).style.width = "223px");
 
          // CLOSE FILTER
          closeIngredientsFilter.addEventListener(
             "click",
             function (e) {
                closeIngredientsFilter.style.display = "none";
+               openIngredientsFilterBox.classList.toggle("visible");
                openIngredientsList.classList.toggle("visible");
                openIngredientsFilter.style.display = "flex";
 
-               // Change the text of the placeholder
-               const ingredientSearchInput = document
+               // Change the text and width of the placeholder
+               const ingredientSearch = document
                   .getElementById("ingredient-search")
                   .setAttribute("placeholder", "Ingrédients");
+               const ingredientSearchInput = (document.querySelector(
+                  "input#ingredient-search"
+               ).style.width = "140px");
             },
             false
          );
@@ -65,30 +76,40 @@ function applianceFilterBtn() {
    openAppliancesFilter.addEventListener(
       "click",
       function (e) {
+         const openAppliancesFilterBox =
+            document.querySelector(".appliance-filter");
          const openAppliancesList =
             document.querySelector(".appliance-list ul");
 
+         openAppliancesFilterBox.classList.toggle("visible");
          openAppliancesList.classList.toggle("visible");
          openAppliancesFilter.style.display = "none";
          closeAppliancesFilter.style.display = "flex";
 
-         // Change the text of the placeholder
-         const applianceSearchInput = document
+         // Change the text and width of the placeholder
+         const applianceSearch = document
             .getElementById("appliance-search")
             .setAttribute("placeholder", "Rechercher un appareil");
+         const applianceSearchInput = (document.querySelector(
+            "input#appliance-search"
+         ).style.width = "223px");
 
          // CLOSE FILTER
          closeAppliancesFilter.addEventListener(
             "click",
             function (e) {
                closeAppliancesFilter.style.display = "none";
+               openAppliancesFilterBox.classList.toggle("visible");
                openAppliancesList.classList.toggle("visible");
                openAppliancesFilter.style.display = "flex";
 
-               // Change the text of the placeholder
-               const applianceSearchInput = document
+               // Change the text and width of the placeholder
+               const applianceSearch = document
                   .getElementById("appliance-search")
                   .setAttribute("placeholder", "Appareils");
+               const applianceSearchInput = (document.querySelector(
+                  "input#appliance-search"
+               ).style.width = "140px");
             },
             false
          );
@@ -115,29 +136,39 @@ function utensilFilterBtn() {
    openUtensilsFilter.addEventListener(
       "click",
       function (e) {
+         const openUtensilsFilterBox =
+            document.querySelector(".utensils-filter");
          const openUtensilsList = document.querySelector(".utensils-list ul");
 
+         openUtensilsFilterBox.classList.toggle("visible");
          openUtensilsList.classList.toggle("visible");
          openUtensilsFilter.style.display = "none";
          closeUtensilsFilter.style.display = "flex";
 
-         // Change the text of the placeholder
-         const utensilSearchInput = document
+         // Change the text and width of the placeholder
+         const utensilSearch = document
             .getElementById("utensils-search")
             .setAttribute("placeholder", "Rechercher un ustensile");
+         const utensilSearchInput = (document.querySelector(
+            "input#utensils-search"
+         ).style.width = "223px");
 
          // CLOSE FILTER
          closeUtensilsFilter.addEventListener(
             "click",
             function (e) {
                closeUtensilsFilter.style.display = "none";
+               openUtensilsFilterBox.classList.toggle("visible");
                openUtensilsList.classList.toggle("visible");
                openUtensilsFilter.style.display = "flex";
 
-               // Change the text of the placeholder
-               const utensilSearchInput = document
+               // Change the text and width of the placeholder
+               const utensilSearch = document
                   .getElementById("utensils-search")
                   .setAttribute("placeholder", "Ustensiles");
+               const utensilSearchInput = (document.querySelector(
+                  "input#utensils-search"
+               ).style.width = "140px");
             },
             false
          );

@@ -49,7 +49,7 @@ header h1 {
    border: none;
    color: #6b6b6b;
    background-color: #e7e7e7;
-   text-transform: lowercase;
+   /* text-transform: lowercase; */
 }
 
 .fa-search {
@@ -71,15 +71,20 @@ header h1 {
 }
 
 /* -------------------------- */
-/* ----- Selected tags ------ */
+/* -------- Tags bar -------- */
 /* -------------------------- */
 
-.selected-tags {
+.tags-bar {
+   display: flex;
+   flex-wrap: wrap;
+}
+
+.selected-tag {
    display: flex;
    justify-content: space-evenly;
    align-items: center;
-   height: 37px;
-   width: 107px;
+   margin: 5px 10px 5px 0;
+   padding: 0 14px 0 19px;
    border-radius: 5px;
    background-color: #3282f7;
 }
@@ -92,8 +97,22 @@ header h1 {
 }
 
 .fa-times-circle {
+   padding: 9px 7px 9px 14px;
    font-size: 21px;
    color: #fff;
+}
+
+/* Tags background color */
+.ingredient {
+   background-color: #3282f7;
+}
+
+.appliance {
+   background-color: #68d9a4;
+}
+
+.utensil {
+   background-color: #ed6454;
 }
 
 /* -------------------------- */
@@ -118,6 +137,24 @@ header h1 {
    margin-left: 0;
 }
 
+.ingredients-filter.visible {
+   width: 667px;
+   border-radius: 5px;
+   background-color: #3282f7;
+}
+
+.appliance-filter.visible {
+   width: 667px;
+   border-radius: 5px;
+   background-color: #68d9a4;
+}
+
+.utensils-filter.visible {
+   width: 667px;
+   border-radius: 5px;
+   background-color: #ed6454;
+}
+
 #ingredient-search,
 #appliance-search,
 #utensils-search {
@@ -127,6 +164,10 @@ header h1 {
    letter-spacing: 0.2px;
    border-radius: 5px;
    border: none;
+   outline: none;
+}
+
+#ingredient-search {
    background-color: #3282f7;
 }
 
@@ -136,6 +177,13 @@ header h1 {
 
 #utensils-search {
    background-color: #ed6454;
+}
+
+input#ingredient-search {
+   font-size: 17px;
+   font-weight: 700;
+   font-family: "lato";
+   color: #fff;
 }
 
 #ingredient-search::placeholder,
@@ -191,8 +239,32 @@ header h1 {
 .appliance-list ul.visible,
 .utensils-list ul.visible {
    display: flex;
-   margin-top: -4px;
+   flex-wrap: wrap;
+   width: 637px;
+   height: auto;
+   z-index: 1;
+   position: relative;
+   margin-top: -7px;
+   padding: 15px;
    border-radius: 0 0 5px 5px;
+}
+
+.ingredients-list ul li,
+.appliance-list ul li,
+.utensils-list ul li {
+   width: 31%;
+   padding: 5px;
+   font-size: 18px;
+   font-weight: 400;
+   font-family: "lato";
+   text-transform: lowercase;
+   color: #fff;
+}
+
+.ingredients-list ul li:first-letter,
+.appliance-list ul li:first-letter,
+.utensils-list ul li:first-letter {
+   text-transform: capitalize;
 }
 
 /* -------------------------- */
@@ -272,12 +344,6 @@ header h1 {
 
 .ingredients ul li {
    font-size: 12px;
-   font-weight: 700;
-   font-family: "lato";
-}
-
-.ingredient {
-   font-size: 12.5px;
    font-weight: 700;
    font-family: "lato";
 }
