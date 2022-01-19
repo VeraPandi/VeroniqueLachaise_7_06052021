@@ -34,7 +34,7 @@
                   type="text"
                   id="search-entry"
                   name="search-entry"
-                  placeholder="Rechercher un ingrédient, appareil, ustensiles ou une recette"
+                  placeholder="Rechercher un ingrédient, appareil, ustensile ou une recette"
                />
                <span class="fas fa-search"></span>
             </div>
@@ -44,12 +44,13 @@
             <!-- Search filters -->
             <div class="filters">
                <!-- Ingredients -->
-               <div class="ingredients-filter">
+               <div class="ingredients-filter" data-name="ingredients">
                   <label for="ingredient-search"></label>
                   <input
                      type="text"
                      id="ingredient-search"
                      name="ingredient-search"
+                     data-name="ingredient"
                      placeholder="Ingrédients"
                   />
                   <span class="fas fa-chevron-down"></span>
@@ -58,12 +59,13 @@
                </div>
 
                <!-- Appliance -->
-               <div class="appliance-filter">
+               <div class="appliance-filter" data-name="appliance">
                   <label for="appliance-search"></label>
                   <input
                      type="text"
                      id="appliance-search"
                      name="appliance-search"
+                     data-name="appliance"
                      placeholder="Appareils"
                   />
                   <span class="fas fa-chevron-down"></span>
@@ -72,12 +74,13 @@
                </div>
 
                <!-- Utensils -->
-               <div class="utensils-filter">
-                  <label for="utensils-search"></label>
+               <div class="utensils-filter" data-name="utensils">
+                  <label for="utensil-search"></label>
                   <input
                      type="text"
-                     id="utensils-search"
-                     name="utensils-search"
+                     id="utensil-search"
+                     name="utensil-search"
+                     data-name="utensil"
                      placeholder="Ustensiles"
                   />
                   <span class="fas fa-chevron-down"></span>

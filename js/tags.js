@@ -1,3 +1,5 @@
+export { tagsArray };
+
 // _______________________________
 //
 //    DOM ELEMENTS
@@ -38,8 +40,6 @@ function tagsArray() {
             // Display of the selected tag
             const tagsBar = document.querySelector(".tags-bar");
             displayTag(array, tagsBar);
-
-            //
          },
          false
       );

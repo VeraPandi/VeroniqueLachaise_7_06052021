@@ -1,6 +1,6 @@
 // ___________________________________________________
 //
-//    IMPORTS
+//    IMPORTS / EXPORTS
 // ___________________________________________________
 
 import { getIngredients } from "./search-bar.js";
@@ -18,7 +18,7 @@ function getAppliances() {
    let applianceArray = [];
    for (let i = 0; i < recipes.length; i++) {
       recipe = recipes[i];
-      applianceArray.push(recipe.appliance);
+      applianceArray.push(recipe.appliance.toLowerCase());
    }
 
    applianceArray = [...new Set(applianceArray)];
@@ -32,10 +32,7 @@ function getUtensils() {
       ...new Set(
          recipes
             .map((recipe) =>
-               recipe.utensils.map(
-                  (utensils) =>
-                     utensils.charAt(0).toUpperCase() + utensils.slice(1)
-               )
+               recipe.utensils.map((utensils) => utensils.toLowerCase())
             )
             .flat()
       ),
@@ -54,6 +51,7 @@ function ingredientFilter() {
    const filter = document.querySelector(".ingredients-filter");
    const newList = document.createElement("div");
    newList.className = "ingredients-list";
+   newList.setAttribute("data-name", "ingredients");
    const newUl = document.createElement("ul");
 
    filter.appendChild(newList);
@@ -83,6 +81,7 @@ function applianceFilter() {
    const filter = document.querySelector(".appliance-filter");
    const newList = document.createElement("div");
    newList.className = "appliance-list";
+   newList.setAttribute("data-name", "appliance");
    const newUl = document.createElement("ul");
 
    filter.appendChild(newList);
@@ -112,6 +111,7 @@ function utensilFilter() {
    const filter = document.querySelector(".utensils-filter");
    const newList = document.createElement("div");
    newList.className = "utensils-list";
+   newList.setAttribute("data-name", "utensils");
    const newUl = document.createElement("ul");
 
    filter.appendChild(newList);
