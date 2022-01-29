@@ -1,12 +1,15 @@
-//______________________________________________
+// ___________________________________________________________________________
 //
 //    INGREDIENTS FILTER BUTTON
-// _____________________________________________
+// ___________________________________________________________________________
 
-//    OPEN FILTER
-// __________________
+// ============================
+// OPEN FILTER
+// ============================
 function openIngredientsFilter() {
    const ingredientsFilter = document.querySelector(".ingredients-filter");
+   const filterInput = document.querySelector(".ingredients-filter input");
+
    const chevronDown = document.querySelector(
       ".ingredients-filter .fa-chevron-down"
    );
@@ -14,8 +17,8 @@ function openIngredientsFilter() {
       ".ingredients-filter .fa-chevron-up"
    );
 
-   chevronDown.addEventListener(
-      "click",
+   filterInput.addEventListener(
+      "focus",
       function (e) {
          // Close the filters already open
          closeOpenButtons();
@@ -33,19 +36,23 @@ function openIngredientsFilter() {
          const ingredientSearch = document
             .getElementById("ingredient-search")
             .setAttribute("placeholder", "Rechercher un ingrédient");
-         const ingredientSearchInput = (document.querySelector(
+         const ingredientSearchInput = document.querySelector(
             "input#ingredient-search"
-         ).style.width = "223px");
+         );
+         ingredientSearchInput.style.width = "223px";
+         ingredientSearchInput.style.color = "#ffffff8f";
       },
       false
    );
 }
 openIngredientsFilter();
 
-//    CLOSE FILTER
-// __________________
+// ============================
+// CLOSE FILTER
+// ============================
 function closeIngredientsFilter() {
    const ingredientsFilter = document.querySelector(".ingredients-filter");
+
    const chevronDown = document.querySelector(
       ".ingredients-filter .fa-chevron-down"
    );
@@ -68,31 +75,35 @@ function closeIngredientsFilter() {
          const ingredientSearch = document
             .getElementById("ingredient-search")
             .setAttribute("placeholder", "Ingrédients");
-         const ingredientSearchInput = (document.querySelector(
+         const ingredientSearchInput = document.querySelector(
             "input#ingredient-search"
-         ).style.width = "140px");
+         );
+         ingredientSearchInput.style.width = "140px";
+         ingredientSearchInput.style.color = "#fff";
       },
       false
    );
 }
 closeIngredientsFilter();
 
-// _____________________________________________
+// ___________________________________________________________________________
 //
 //    APPLIANCES FILTER BUTTON
-// _____________________________________________
+// ___________________________________________________________________________
 
-//    OPEN FILTER
-// __________________
+// ============================
+// OPEN FILTER
+// ============================
 function openAppliancesFilter() {
    const appliancesFilter = document.querySelector(".appliance-filter");
+   const filterInput = document.querySelector(".appliance-filter input");
    const chevronDown = document.querySelector(
       ".appliance-filter .fa-chevron-down"
    );
    const chevronUp = document.querySelector(".appliance-filter .fa-chevron-up");
 
-   chevronDown.addEventListener(
-      "click",
+   filterInput.addEventListener(
+      "focus",
       function (e) {
          // Close the filters already open
          closeOpenButtons();
@@ -110,17 +121,20 @@ function openAppliancesFilter() {
          const applianceSearch = document
             .getElementById("appliance-search")
             .setAttribute("placeholder", "Rechercher un appareil");
-         const applianceSearchInput = (document.querySelector(
+         const applianceSearchInput = document.querySelector(
             "input#appliance-search"
-         ).style.width = "223px");
+         );
+         applianceSearchInput.style.width = "223px";
+         applianceSearchInput.style.color = "rgba(255, 255, 255, 0.77)";
       },
       false
    );
 }
 openAppliancesFilter();
 
-//    CLOSE FILTER
-// __________________
+// ============================
+// CLOSE FILTER
+// ============================
 function closeAppliancesFilter() {
    const appliancesFilter = document.querySelector(".appliance-filter");
    const chevronDown = document.querySelector(
@@ -143,31 +157,35 @@ function closeAppliancesFilter() {
          const applianceSearch = document
             .getElementById("appliance-search")
             .setAttribute("placeholder", "Appareils");
-         const applianceSearchInput = (document.querySelector(
+         const applianceSearchInput = document.querySelector(
             "input#appliance-search"
-         ).style.width = "140px");
+         );
+         applianceSearchInput.style.width = "140px";
+         applianceSearchInput.style.color = "#fff";
       },
       false
    );
 }
 closeAppliancesFilter();
 
-// _____________________________________________
+// ___________________________________________________________________________
 //
 //    UTENSILS FILTER BUTTON
-// _____________________________________________
+// ___________________________________________________________________________
 
-//    OPEN FILTER
-// __________________
+// ============================
+// OPEN FILTER
+// ============================
 function openUtensilsFilter() {
    const utensilsFilter = document.querySelector(".utensils-filter");
+   const filterInput = document.querySelector(".utensils-filter input");
    const chevronDown = document.querySelector(
       ".utensils-filter .fa-chevron-down"
    );
    const chevronUp = document.querySelector(".utensils-filter .fa-chevron-up");
 
-   chevronDown.addEventListener(
-      "click",
+   filterInput.addEventListener(
+      "focus",
       function (e) {
          // Close the filters already open
          closeOpenButtons();
@@ -185,17 +203,20 @@ function openUtensilsFilter() {
          const utensilSearch = document
             .getElementById("utensil-search")
             .setAttribute("placeholder", "Rechercher un ustensile");
-         const utensilSearchInput = (document.querySelector(
+         const utensilSearchInput = document.querySelector(
             "input#utensil-search"
-         ).style.width = "223px");
+         );
+         utensilSearchInput.style.width = "223px";
+         utensilSearchInput.style.color = "#ffffff8f";
       },
       false
    );
 }
 openUtensilsFilter();
 
-//    CLOSE FILTER
-// __________________
+// ============================
+// CLOSE FILTER
+// ============================
 function closeUtensilsFilter() {
    const utensilsFilter = document.querySelector(".utensils-filter");
    const chevronDown = document.querySelector(
@@ -218,37 +239,38 @@ function closeUtensilsFilter() {
          const utensilSearch = document
             .getElementById("utensil-search")
             .setAttribute("placeholder", "Ustensiles");
-         const utensilSearchInput = (document.querySelector(
+         const utensilSearchInput = document.querySelector(
             "input#utensil-search"
-         ).style.width = "140px");
+         );
+         utensilSearchInput.style.width = "140px";
+         utensilSearchInput.style.color = "#fff";
       },
       false
    );
 }
 closeUtensilsFilter();
 
-// _____________________________________________
+// ___________________________________________________________________________
 //
 //    CLOSE OPENED BUTTONS
-// _____________________________________________
+// ___________________________________________________________________________
 function closeOpenButtons() {
-   const filtersIsVisible = document.querySelectorAll(".filters div .visible");
+   const filtersIsVisible = document.querySelectorAll(
+      ".filters div ul.visible"
+   );
 
-   let filterIsVisible;
-   for (let i = 0; i < filtersIsVisible.length; i++) {
-      filterIsVisible = filtersIsVisible[i];
+   filtersIsVisible.forEach((filterIsVisible) => {
+      filterIsVisible = filterIsVisible.parentElement.parentElement;
 
       if (filterIsVisible) {
          // Template string containing the name of the element that has class "visible"
-         const filterName =
-            filterIsVisible.parentElement.parentElement.dataset.name;
-         const listName = filterIsVisible.parentElement.dataset.name;
-         const searchName = filterIsVisible.firstElementChild.className;
+         const filterName = filterIsVisible.dataset.name;
+         const listName = filterIsVisible.lastChild.dataset.name;
+         const searchName = filterIsVisible.children[1].dataset.name;
 
          // Dom elements
          const filter = document.querySelector(`.${filterName}-filter`);
          const list = document.querySelector(`.${listName}-list ul`);
-
          const chevronDown = document.querySelector(
             `.${filterName}-filter .fa-chevron-down`
          );
@@ -262,14 +284,27 @@ function closeOpenButtons() {
          chevronDown.style.display = "flex";
          chevronUp.style.display = "none";
 
-         // Change the text and width of the placeholder
-         const search = document
-            .querySelector(`#${searchName}-search`)
-            .setAttribute("placeholder", `${filterName}`);
+         // Change the text of the placeholder
+         if (filterName === "ingredients") {
+            const search = document
+               .querySelector(`#${searchName}-search`)
+               .setAttribute("placeholder", "Ingrédients");
+         } else if (filterName === "appliance") {
+            const search = document
+               .querySelector(`#${searchName}-search`)
+               .setAttribute("placeholder", "Appareils");
+         } else if (filterName === "utensils") {
+            const search = document
+               .querySelector(`#${searchName}-search`)
+               .setAttribute("placeholder", "Ustensiles");
+         }
 
-         const searchInput = (document.querySelector(
+         // Change the width of the placeholder
+         const searchInput = document.querySelector(
             `input#${searchName}-search`
-         ).style.width = "140px");
+         );
+         searchInput.style.width = "140px";
+         searchInput.style.color = "#fff";
       }
-   }
+   });
 }

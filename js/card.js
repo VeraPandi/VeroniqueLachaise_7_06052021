@@ -1,37 +1,34 @@
-// ___________________________________________________
+// ___________________________________________________________________________
 //
 //    IMPORT / EXPORT
-// ___________________________________________________
+// ___________________________________________________________________________
 
 import { recipes } from "../api/recipes.js";
 
 export { createCard };
 
-// _______________________________
+// ___________________________________________________________________________
 //
 //    DOM ELEMENTS
-// _______________________________
+// ___________________________________________________________________________
+
 const main = document.querySelector("main");
 const section = document.createElement("section");
 section.className = "card-section";
 main.appendChild(section);
 const cardSection = document.querySelector(".card-section");
 
-// _______________________________
+// ___________________________________________________________________________
 //
 //    CARDS CREATION
-// _______________________________
+// ___________________________________________________________________________
+
 function createCard(recipes) {
    // Empty the cards section
    cardSection.innerHTML = "";
 
-   // Create and display cards
-   let recipe;
-   let card;
-   for (let i = 0; i < recipes.length; i++) {
-      recipe = recipes[i];
-
-      card = `
+   recipes.forEach((recipe) => {
+      let card = `
         <article class="card" data-id="${recipe.id}">
                   <div class="card-container">
                      <a href="#"></a>
@@ -45,9 +42,11 @@ function createCard(recipes) {
                         </div>
                         <div class="infos-footer">
                             <div class="ingredients">
-                                <ul>`;
+                                <ul data-id="${recipe.id}">`;
       recipe.ingredients.forEach((ingredient) => {
-         card += `<li>${ingredient.ingredient} ${
+         card += `<li data-name="${ingredient.ingredient.toLowerCase()}">${
+            ingredient.ingredient
+         } ${
             ingredient.quantity
                ? "<span class='quantity-unit'>: " + ingredient.quantity
                : ""
@@ -63,7 +62,7 @@ function createCard(recipes) {
         `;
 
       cardSection.innerHTML += card;
-   }
+   });
 }
 
 createCard(recipes);

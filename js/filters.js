@@ -1,32 +1,40 @@
-// ___________________________________________________
+// ___________________________________________________________________________
 //
 //    IMPORTS / EXPORTS
-// ___________________________________________________
+// ___________________________________________________________________________
 
-import { getIngredients } from "./search-bar.js";
 import { recipes } from "../api/recipes.js";
 
-export { ingredientFilter, getAppliances, getUtensils };
+export {
+   getAppliances,
+   getUtensils,
+   getRemainingIngredients,
+   getRemainingAppliances,
+   getRemainingUtensils,
+};
 
-// _________________________________________
+// ___________________________________________________________________________
 //
 //    DATAS
-// _________________________________________
-// Filtered appliance array
+// ___________________________________________________________________________
+
+// ============================
+// APPLIANCE ARRAY
+// ============================
 function getAppliances() {
-   let recipe;
    let applianceArray = [];
-   for (let i = 0; i < recipes.length; i++) {
-      recipe = recipes[i];
+   recipes.forEach((recipe) => {
       applianceArray.push(recipe.appliance.toLowerCase());
-   }
+   });
 
    applianceArray = [...new Set(applianceArray)];
 
    return applianceArray;
 }
 
-// Filtered utensils array
+// ============================
+// UTENSILS ARRAY
+// ============================
 function getUtensils() {
    return [
       ...new Set(
@@ -39,16 +47,80 @@ function getUtensils() {
    ];
 }
 
-// _________________________________________
-//
-//    DISPLAYS THE INGREDIENTS IN ITS FILTER
-// _________________________________________
-function ingredientFilter() {
-   // Array of ingredients
-   const ingredients = getIngredients();
+// ==========================================
+// ARRAY OF INGREDIENTS IN DISPLAYED RECIPES
+// ==========================================
+function getRemainingIngredients() {
+   const lis = document.querySelectorAll(".ingredients ul li");
 
+   let ingredients = [];
+   lis.forEach((li) => {
+      li = li.dataset.name;
+      ingredients.push(li);
+   });
+
+   // Return the array of ingredients
+   return (ingredients = [...new Set(ingredients)]);
+}
+
+// ==========================================
+// ARRAY OF APPLIANCES IN DISPLAYED RECIPES
+// ==========================================
+function getRemainingAppliances() {
+   const cards = document.querySelectorAll(".card");
+
+   let appliances = [];
+   recipes.forEach((recipe) => {
+      cards.forEach((card) => {
+         card = card.dataset.id;
+
+         if (recipe.id == card) {
+            appliances.push(recipe.appliance.toLowerCase());
+         }
+      });
+   });
+
+   // Return the array of appliances
+   return (appliances = [...new Set(appliances)]);
+}
+
+// ==========================================
+// ARRAY OF UTENSILS IN DISPLAYED RECIPES
+// ==========================================
+function getRemainingUtensils() {
+   const cards = document.querySelectorAll(".card");
+
+   let utensils = [];
+   recipes.forEach((recipe) => {
+      recipe.utensils.forEach((utensil) => {
+         utensil = utensil.toLowerCase();
+
+         cards.forEach((card) => {
+            card = card.dataset.id;
+
+            if (recipe.id == card) {
+               utensils.push(utensil);
+            }
+         });
+      });
+   });
+
+   // Return the array of utensils
+   return (utensils = [...new Set(utensils)]);
+}
+
+// ___________________________________________________________________________
+//
+//     CREATION OF FILTERS
+// ___________________________________________________________________________
+
+// ==========================================
+// INGREDIENTS FILTER
+// ==========================================
+function createIngredientsFilter() {
    // Dom elements
    const filter = document.querySelector(".ingredients-filter");
+   const input = document.getElementById("ingredient-search");
    const newList = document.createElement("div");
    newList.className = "ingredients-list";
    newList.setAttribute("data-name", "ingredients");
@@ -57,28 +129,19 @@ function ingredientFilter() {
    filter.appendChild(newList);
    newList.appendChild(newUl);
 
-   // Create and display the list of ingredients
-   let showList;
-   ingredients.forEach((ingredient, i) => {
-      showList = `
-        <li class="ingredient">${ingredient}</li>
-`;
-      newUl.innerHTML += showList;
-   });
+   filter.addEventListener("click", displayIngredients);
+   input.addEventListener("keyup", displayIngredients);
 }
 
-ingredientFilter();
+createIngredientsFilter();
 
-// _________________________________________
-//
-//    DISPLAY THE APPLIANCES IN ITS FILTER
-// _________________________________________
-function applianceFilter() {
-   // Array of appliances
-   const appliances = getAppliances();
-
+// ==========================================
+// APPLIANCES FILTER
+// ==========================================
+function createAppliancesFilter() {
    // Dom elements
    const filter = document.querySelector(".appliance-filter");
+   const input = document.getElementById("appliance-search");
    const newList = document.createElement("div");
    newList.className = "appliance-list";
    newList.setAttribute("data-name", "appliance");
@@ -87,28 +150,19 @@ function applianceFilter() {
    filter.appendChild(newList);
    newList.appendChild(newUl);
 
-   // Create and display the list of appliances
-   let showList;
-   appliances.forEach((appliance) => {
-      showList = `
-        <li class="appliance">${appliance}</li>
-`;
-      newUl.innerHTML += showList;
-   });
+   filter.addEventListener("click", displayAppliances);
+   input.addEventListener("keyup", displayAppliances);
 }
 
-applianceFilter();
+createAppliancesFilter();
 
-// _________________________________________
-//
-//    DISPLAY THE UTENSILS IN ITS FILTER
-// _________________________________________
-function utensilFilter() {
-   // Array of utensils
-   const utensils = getUtensils();
-
+// ==========================================
+// UTENSILS FILTER
+// ==========================================
+function createUtensilsFilter() {
    // Dom elements
    const filter = document.querySelector(".utensils-filter");
+   const input = document.getElementById("utensil-search");
    const newList = document.createElement("div");
    newList.className = "utensils-list";
    newList.setAttribute("data-name", "utensils");
@@ -117,14 +171,99 @@ function utensilFilter() {
    filter.appendChild(newList);
    newList.appendChild(newUl);
 
-   // Create and display the list of utensils
-   let showList;
-   utensils.forEach((utensils) => {
-      showList = `
-        <li class="utensil">${utensils}</li>
-`;
-      newUl.innerHTML += showList;
-   });
+   filter.addEventListener("click", displayUtensils);
+   input.addEventListener("keyup", displayUtensils);
 }
 
-utensilFilter();
+createUtensilsFilter();
+
+// ___________________________________________________________________________
+//
+//     DISPLAY ITEM LISTS
+// ___________________________________________________________________________
+
+// ==========================================
+// INGREDIENTS LIST
+// ==========================================
+function displayIngredients() {
+   const input = document.getElementById("ingredient-search");
+   const ul = document.querySelector(".ingredients-list ul");
+   ul.style.paddingBottom = "15px";
+   input.style.color = "#ffffff8f";
+
+   // Array of ingredients in displayed recipes
+   let ingredients = getRemainingIngredients();
+   ingredients = ingredients.sort();
+
+   const inputValue = input.value;
+
+   // Filters matches between the ingredient name and the value in the field
+   const ingredientToDisplay = ingredients.filter((i) =>
+      i.includes(inputValue)
+   );
+
+   // Display matches
+   ul.innerHTML = "";
+   ingredientToDisplay.forEach(
+      (i) =>
+         (ul.innerHTML += `
+               <li class="ingredient">${[i]}</li>
+               `)
+   );
+}
+
+// ==========================================
+// APPLIANCES LIST
+// ==========================================
+function displayAppliances() {
+   const input = document.getElementById("appliance-search");
+   const ul = document.querySelector(".appliance-list ul");
+   ul.style.paddingBottom = "15px";
+   input.style.color = "rgba(255, 255, 255, 0.77)";
+
+   // Array of appliances in displayed recipes
+   let appliances = getRemainingAppliances();
+   appliances = appliances.sort();
+
+   const inputValue = input.value;
+
+   // Filters matches between the appliance name and the value in the field
+   const applianceToDisplay = appliances.filter((i) => i.includes(inputValue));
+
+   // Display matches
+   ul.innerHTML = "";
+   applianceToDisplay.forEach(
+      (i) =>
+         (ul.innerHTML += `
+               <li class="appliance">${[i]}</li>
+               `)
+   );
+}
+
+// ==========================================
+// UTENSILS LIST
+// ==========================================
+function displayUtensils() {
+   const input = document.getElementById("utensil-search");
+   const ul = document.querySelector(".utensils-list ul");
+   ul.style.paddingBottom = "15px";
+   input.style.color = "#ffffff8f";
+
+   // Array of utensils in displayed recipes
+   let utensils = getRemainingUtensils();
+   utensils = utensils.sort();
+
+   const inputValue = input.value;
+
+   // Filters matches between the utensil name and the value in the field
+   const utensilToDisplay = utensils.filter((i) => i.includes(inputValue));
+
+   // Display matches
+   ul.innerHTML = "";
+   utensilToDisplay.forEach(
+      (i) =>
+         (ul.innerHTML += `
+               <li class="utensil">${[i]}</li>
+               `)
+   );
+}
