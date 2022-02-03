@@ -48,7 +48,7 @@ function displayWarningMessage() {
 // ============================
 function mainInput() {
    const input = document.getElementById("search-entry");
-   const searchBtn = document.querySelector(".fa-search");
+   const searchBtn = document.querySelector(".search-bar img");
 
    searchBtn.addEventListener(
       "click",
@@ -110,6 +110,10 @@ function mainInput() {
          });
 
          createCard(displayRecipes);
+
+         // Get the recipes to display if searching in the main search field is
+         // combined with searching in filters
+         getRecipesForFilters(displayRecipes);
       },
       false
    );
@@ -132,3 +136,23 @@ function mainInput() {
 }
 
 mainInput();
+
+// =========================================
+// COMBINED SEARCHES (main bar and filters)
+// =========================================
+// Get and display recipes if main search is combined with search in filters
+function getRecipesForFilters(displayRecipes) {
+   const tagsBar = document.querySelector(".tags-bar");
+   const input = document.getElementById("search-entry");
+   const cardSection = document.querySelector(".card-section");
+
+   tagsBar.addEventListener("click", (e) => {
+      if (tagsBar.children.length === 0 && input.textLength !== 0) {
+         cardSection.innerHTML = "";
+         createCard(displayRecipes);
+      } else if (tagsBar.children.length === 0 && input.textLength === 0) {
+         cardSection.innerHTML = "";
+         createCard(recipes);
+      }
+   });
+}

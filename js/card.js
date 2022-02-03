@@ -24,7 +24,6 @@ const cardSection = document.querySelector(".card-section");
 // ___________________________________________________________________________
 
 function createCard(recipes) {
-   // Empty the cards section
    cardSection.innerHTML = "";
 
    recipes.forEach((recipe) => {

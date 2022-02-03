@@ -117,7 +117,7 @@ function openAppliancesFilter() {
          chevronDown.style.display = "none";
          chevronUp.style.display = "flex";
 
-         //  Change the text and width of the placeholder
+         // Change the text and width of the placeholder
          const applianceSearch = document
             .getElementById("appliance-search")
             .setAttribute("placeholder", "Rechercher un appareil");
@@ -254,6 +254,7 @@ closeUtensilsFilter();
 //
 //    CLOSE OPENED BUTTONS
 // ___________________________________________________________________________
+
 function closeOpenButtons() {
    const filtersIsVisible = document.querySelectorAll(
       ".filters div ul.visible"
