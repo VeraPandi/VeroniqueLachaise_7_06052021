@@ -463,7 +463,7 @@ const recipes = [
             unit: "grammes",
          },
          {
-            ingredient: "Echalote",
+            ingredient: "échalote",
             quantity: 2,
          },
          {
@@ -479,7 +479,7 @@ const recipes = [
       ],
       time: 40,
       description:
-         "Cuire les pommes de terre environ 30 minutes. Découper les echalotes finement. Durant la cuisson des pommes de terre. Préparez la vinaigrette avec les cuillère à soupe de l'huile d'olive et le vinaigre de cidre. Salez poivrez à discrétion. Dans un saladier, mettre le mâche. Ajouter",
+         "Cuire les pommes de terre environ 30 minutes. Découper les échalote finement. Durant la cuisson des pommes de terre. Préparez la vinaigrette avec les cuillère à soupe de l'huile d'olive et le vinaigre de cidre. Salez poivrez à discrétion. Dans un saladier, mettre le mâche. Ajouter",
       appliance: "Casserole",
       utensils: ["couteau", "saladier", "cuillère en bois"],
    },
