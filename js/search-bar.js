@@ -55,37 +55,38 @@ function mainInput() {
       (e) => {
          input.style.color = "#000";
 
-         // Remove capital letters from search words
+         // Change the input value to lowercase
          input.value = input.value.toLowerCase();
 
          // Array containing the recipes to display
          let displayRecipes = [];
-         recipes.forEach((recipe) => {
-            if (input.textLength < 3) {
-               displayWarningMessage();
-            }
 
-            // Checks matches
+         for (let i = 0; i < recipes.length; i++) {
             if (input.textLength >= 3) {
-               const matchName = recipe.name // <= Recipe title
+               // Checks matches
+               const matchName = recipes[i].name // <= Recipe title
                   .toLowerCase()
                   .includes(input.value);
 
-               const matchDescription = recipe.description
+               const matchDescription = recipes[i].description
                   .toLowerCase()
                   .includes(input.value + " ");
 
-               const matchIngredient = recipe.ingredients.forEach((i) => {
-                  i.ingredient.toLowerCase().includes(input.value);
-               });
+               let matchIngredient;
+               for (let i = 0; i < recipes[i].ingredients.length; i++) {
+                  matchIngredient =
+                     recipes[i].ingredients[i].ingredient.toLowerCase() ===
+                     input.value;
+               }
 
-               const matchAppliance = recipe.appliance
-                  .toLowerCase()
-                  .includes(input.value);
+               const matchAppliance =
+                  recipes[i].appliance.toLowerCase() === input.value;
 
-               const matchUtensil = recipe.utensils.forEach((utensil) => {
-                  utensil.toLowerCase().includes(input.value);
-               });
+               let matchUtensil;
+               for (let i = 0; i < recipes[i].utensils.length; i++) {
+                  matchUtensil =
+                     recipes[i].utensils[i].toLowerCase() === input.value;
+               }
 
                if (
                   matchName ||
@@ -94,9 +95,9 @@ function mainInput() {
                   matchAppliance ||
                   matchUtensil
                ) {
-                  displayRecipes.push(recipe);
+                  displayRecipes.push(recipes[i]);
 
-                  // Hide the warning message if there is a match
+                  // Hide warning message
                   const warningMessage =
                      document.querySelector(".warning-message");
                   warningMessage.style.display = "none";
@@ -107,7 +108,7 @@ function mainInput() {
                   displayWarningMessage();
                }
             }
-         });
+         }
 
          createCard(displayRecipes);
 
@@ -122,13 +123,13 @@ function mainInput() {
       // Display all recipes when the search field is emptied by the user
       if (input.textLength === 0) {
          let displayRecipes = [];
-         recipes.forEach((recipe) => {
-            displayRecipes.push(recipe);
-         });
+         for (let i = 0; i < recipes.length; i++) {
+            displayRecipes.push(recipes[i]);
 
-         // Hide warning message
-         const warningMessage = document.querySelector(".warning-message");
-         warningMessage.style.display = "none";
+            // Hide warning message
+            const warningMessage = document.querySelector(".warning-message");
+            warningMessage.style.display = "none";
+         }
 
          createCard(displayRecipes);
       }
