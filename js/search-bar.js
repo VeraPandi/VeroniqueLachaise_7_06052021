@@ -112,7 +112,7 @@ function mainInput() {
 
          createCard(displayRecipes);
 
-         // Get the recipes to display if searching in the main search field is
+         // Gets the recipes to display if searching in the main search field is
          // combined with searching in filters
          getRecipesForFilters(displayRecipes);
       },
