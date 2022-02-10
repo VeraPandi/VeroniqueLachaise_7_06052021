@@ -78,6 +78,7 @@ function closeIngredientsFilter() {
          const ingredientSearchInput = document.querySelector(
             "input#ingredient-search"
          );
+         ingredientSearchInput.value = "";
          ingredientSearchInput.style.width = "140px";
          ingredientSearchInput.style.color = "#fff";
       },
@@ -160,6 +161,7 @@ function closeAppliancesFilter() {
          const applianceSearchInput = document.querySelector(
             "input#appliance-search"
          );
+         applianceSearchInput.value = "";
          applianceSearchInput.style.width = "140px";
          applianceSearchInput.style.color = "#fff";
       },
@@ -242,6 +244,7 @@ function closeUtensilsFilter() {
          const utensilSearchInput = document.querySelector(
             "input#utensil-search"
          );
+         utensilSearchInput.value = "";
          utensilSearchInput.style.width = "140px";
          utensilSearchInput.style.color = "#fff";
       },
@@ -304,6 +307,7 @@ function closeOpenButtons() {
          const searchInput = document.querySelector(
             `input#${searchName}-search`
          );
+         searchInput.value = "";
          searchInput.style.width = "140px";
          searchInput.style.color = "#fff";
       }
